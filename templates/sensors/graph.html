@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block graph %}
+
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">
+                Графики
+            </h1>
+        </div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#description" aria-controls="dht" role="tab" data-toggle="tab">
+                    DHT - Датчик температуры и влажости
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a href="#delivery" aria-controls=bmp" role="tab" data-toggle="tab">
+                    BMP - Датчики атмосферного давления
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content product-description-tabs" >
+            <div role="tabpanel" class="tab-pane active" id="description">
+                <p align="center">Датчики температуры и влажнсоти</p>
+                <div class="col-lg-6" >
+                    <p align="center">Температура</p>
+                    <img src="{% static 'graph/dht_temp.png' %}" alt="Датчики температуры и влажнсоти">
+                </div>
+
+                <div class="col-lg-6">
+                    <div>
+                        <p align="center">Влажности</p>
+                        <img src="{% static 'graph/dht_hun.png' %}" alt="Датчик температуры и влажности">
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="delivery">
+                <p align="center">Датчики атмосферного давления</p>
+                <div class="col-lg-6" >
+                    <p align="center">Температура</p>
+                    <img src="{% static 'graph/bmp_temp.png' %}" alt="Датчики температуры и влажнсоти">
+                </div>
+
+                <div class="col-lg-6">
+                    <div>
+                        <p align="center">Давление</p>
+                        <img src="{% static 'graph/bmp_hun.png' %}" alt="Датчик температуры и влажности">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

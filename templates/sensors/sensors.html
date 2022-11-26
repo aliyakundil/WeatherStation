@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block sensors %}
+
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">
+                Датчики
+            </h1>
+        </div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#description" aria-controls="dht" role="tab" data-toggle="tab">
+                    Датчик температуры и влажости
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a href="#delivery" aria-controls=bmp" role="tab" data-toggle="tab">
+                    Датчик атмосферного давления
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                    Датчик воды
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+       <div class="tab-content product-description-tabs" >
+            <div role="tabpanel" class="tab-pane active" id="description">
+            <div>
+                <div><table class="simple-little-table" style="margin-left: auto; margin-right: auto;">
+
+                        <tr>
+                            <th>Датчик</th>
+                            <th>Дата</th>
+                            <th>Температура</th>
+                            <th>Влажность</th>
+                        </tr>
+                        {% for Dht in bbs %}
+                        <tr>
+                            <td>Датчики температуры и влажности</td>
+                            <td>{{ Dht.date}}</td>
+                            <td> {{ Dht.temperature}} </td>
+                            <td>{{ Dht.humidity}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="delivery">
+
+                <div style="margin-bottom: 200px">
+                    <div><table class="simple-little-table" style="margin-left: auto; margin-right: auto;">
+                        <tr>
+                            <th>Датчик</th>
+                            <th>Дата</th>
+                            <th>Температура</th>
+                            <th>Давление</th>
+                        </tr>
+                        {% for Bmp in bbs3 %}
+                        <tr>
+                            <td>Датчик атмосферного давления</td>
+                            <td>{{ Bmp.date}}</td>
+                            <td> {{ Bmp.temperature}} </td>
+                            <td>{{ Bmp.pressure}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="settings">
+
+                <div style="margin-bottom: 200px">
+                    <div><table class="simple-little-table" style="margin-left: auto; margin-right: auto;">
+                        <tr>
+                            <th>Датчик</th>
+                            <th>Дата</th>
+                            <th>Характеристка</th>
+                        </tr>
+                        {% for Water in bbs2 %}
+                        <tr>
+                            <td>Датчик воды</td>
+                            <td>{{ Water.date}}</td>
+                            <td> {{ Water.characteristic}} </td>
+                        </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

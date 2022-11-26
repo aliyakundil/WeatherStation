@@ -1,0 +1,12 @@
+{
+ "Date": "08.07.2020 11:11",
+ "DHT": {
+  "Temperature": 26.0,
+  "Humidity": 29.0
+ },
+ "Water sensor": "Sensor is dry",
+ "BMP": {
+  "Temperature": "29.45*C",
+  "Pressure": "916.71hPa"
+ }
+}

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--========== WEATHER ==========-->
+        <div class="container" style="margin-top: 100px; margin-left: 115px;">
+            <div class="row">
+                <div class="col col-lg-2">
+                    <div style="display:inline-block">
+                        <div class="container" >
+                            <div class="row">
+                                <div class='alert alert-info' style="background: #f2f3f4; display: inline-block; width:180px; height:125px; vertical-align: middle;">
+                                    <div style="text-align: center; display: table-cell; justify-content: center; vertical-align: middle;";>
+                                        <big><b>Текущая погода</b></big>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <marquee scrollamount="5" width="940" height="124.5" style="background: #17bed2;">
+                        {% for info in all_info %}
+                            <div style="display:inline-block">
+                                <div class="alert alert-info" style="text-align: center; width:125px; height:125px">
+                                    <div class="col-9">
+                                        {{info.city}}<br>
+                                        <b>{{info.temp}}<sup>o</sup>C</b><br>
+                                            <img src="http://openweathermap.org/img/w/{{info.icon}}.png" alt="Фото погоды">
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor  %}
+                    </marquee>
+                </div>
+
+            </div>
+        </div>
+        <!--========== WEATHER ==========-->
+
+        <div style="margin-left: 130px;">
+            <div id='map' style='width: 1120px; height: 700px;'></div>
+                <script>
+                    mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpYTE5OThuIiwiYSI6ImNrOXgyeDk1ajA0N2IzZXJvdjNtemZnZTYifQ.spOHkWiuIeO4kdbzQKF4Aw';
+                    var map = new mapboxgl.Map({
+                    container: 'map',
+                    /*style: 'mapbox://styles/mapbox/streets-v11',*/
+                    style: 'mapbox://styles/alia1998n/ckc7x43bp2o1x1ip2b71vhyz6',
+                    /*center: [74.98333, 41.26667],*/ /*Карта всего Кыргызстана*/
+                    center: [74.6078, 42.8764],  /*Карта Бишкека*/
+                    zoom:11
+                    });
+
+                    map.on('click', function(e) {
+                    var features = map.queryRenderedFeatures(e.point, {
+                    layers: ['Малдыбаева'] // replace this with the name of the layer
+                  });
+
+                  if (!features.length) {
+                    return;
+                  }
+
+                  var feature = features[0];
+
+                  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+                    .setLngLat(feature.geometry.coordinates)
+                    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+                    .addTo(map);
+                });
+
+
+                </script>
+        </div>
+
+        <!--========== WEATHER STATION ==========-->
+        <div id="about" style="margin-top: 100px">
+            <div class="container content-lg">
+                <div class="row">
+                    <div class="col-sm-5 sm-margin-b-60">
+                        <img class="full-width img-responsive" src="{% static "img/500x700/03.jpg"%}" alt="Image">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="section-seperator margin-b-50" role="tabpanel" class="tab-pane active">
+                            <div class="margin-b-50">
+                                <div class="margin-b-30">
+                                    <h2>Мониторинг чрезвычайных ситуаций </h2>
+                                    <p align="justify">Сущность и назначение мониторинга и прогнозирования ЧС — в наблюдении, контроле и
+                                        предвидении опасных процессов и явлений природы и техносферы,
+                                        являющихся источниками чрезвычайных ситуаций, динамики развития чрезвычайных ситуаций,
+                                        определения их масштабов в целях предупреждения и организации ликвидации бедствий.</p>
+                                    <p align="justify">Современные мониторинговые сети наблюдения нужны для получения точных координат,
+                                    с системой обеспечения эффективности передачи информации о ЧС
+                                    в целях обеспечения эффективного реагирования службы предупреждения и защиты населения
+                                    и территории от ЧС.</p>
+                                    <p align="justify">Важную роль в деле мониторинга и прогнозирования чрезвычайных ситуаций выполняет
+                                        Министерства чрезвычайных ситуаций Кыргызской Республики, которое осуществляет общее руководство
+                                        государственной системой экологического мониторинга, а также координацию деятельности в области
+                                        наблюдений за состоянием окружающей природной среды. Это министерство и его учреждения организуют и ведут:
+
+
+                                    <p >- мониторинг источников антропогенного воздействия на природную среду;</p>
+                                    <p >- мониторинг животного и растительного мира, наземной флоры и фауны, включая леса;</p>
+                                    <p>- мониторинг водной среды водохозяйственных систем в местах водозабора и сброса сточных вод;</p>
+                                    <p>- мониторинг и прогнозирование опасных геологических процессов, включающий три подсистемы контроля:
+                                        экзогенных и эндогенных геологических процессов и подземных вод.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Progress Box -->
+                    </div>
+                </div>
+                <!--// end row -->
+            </div>
+        </div>
+        <!-- End About -->
+
+{% endblock %}

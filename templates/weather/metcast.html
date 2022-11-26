@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metcast %}
+
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">
+                    Прогноз погоды
+            </h1>
+        </div>
+
+            <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#description" aria-controls="dht" role="tab" data-toggle="tab">
+                    Сегодня
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a href="#delivery" aria-controls=bmp" role="tab" data-toggle="tab">
+                    {{prognoz.date_night}}
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#delivery" aria-controls=bmp" role="tab" data-toggle="tab">
+                    2
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+                    3
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                    4
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content product-description-tabs" >
+            <div role="tabpanel" class="tab-pane active" id="description">
+                <div class="col-lg-6">
+                    <div>
+                        <div><table class="simple-little-table">
+                      <tr>
+                        <th>Город</th>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                          <th style='text-align: center'><img src="{% static 'img/weather/sun.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.city}}</th>
+                          <th>{{prognoz.date}}</th>
+                          <th>{{prognoz.temp}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min}}<sup>o</sup></th>
+
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" >
+                    <div><table class="simple-little-table">
+                      <tr>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                           <th><img src="{% static 'img/weather/moon.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.date_night}}</th>
+                          <th>{{prognoz.temp_night}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_night}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_night}}<sup>o</sup></th>
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="delivery">
+                <div class="col-lg-6">
+                    <div>
+                        <div><table class="simple-little-table">
+                      <tr>
+                        <th>Город</th>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                          <th style='text-align: center'><img src="{% static 'img/weather/sun.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.city_2}}</th>
+                          <th>{{prognoz.date_2}}</th>
+                          <th>{{prognoz.temp_2}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_2}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_2}}<sup>o</sup></th>
+
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" >
+                    <div><table class="simple-little-table">
+                      <tr>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                           <th><img src="{% static 'img/weather/moon.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.date_night2}}</th>
+                          <th>{{prognoz.temp_night2}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_night2}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_night2}}<sup>o</sup></th>
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="messages">
+                <div class="col-lg-6">
+                    <div>
+                        <div><table class="simple-little-table">
+                      <tr>
+                        <th>Город</th>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                          <th style='text-align: center'><img src="{% static 'img/weather/sun.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.city_3}}</th>
+                          <th>{{prognoz.date_3}}</th>
+                          <th>{{prognoz.temp_3}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_3}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_3}}<sup>o</sup></th>
+
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" >
+                    <div><table class="simple-little-table">
+                      <tr>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                           <th><img src="{% static 'img/weather/moon.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.date_night3}}</th>
+                          <th>{{prognoz.temp_night3}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_night3}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_night3}}<sup>o</sup></th>
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="settings">
+                <div class="col-lg-6">
+                    <div>
+                        <div><table class="simple-little-table">
+                      <tr>
+                        <th>Город</th>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                          <th style='text-align: center'><img src="{% static 'img/weather/sun.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.city_4}}</th>
+                          <th>{{prognoz.date_4}}</th>
+                          <th>{{prognoz.temp_4}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_4}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_4}}<sup>o</sup></th>
+
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" >
+                    <div><table class="simple-little-table">
+                      <tr>
+                        <th>Дата</th>
+                        <th>Т</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                           <th><img src="{% static 'img/weather/moon.png'  %}"alt="Солнце" width="40" height="40"></th>
+                        </tr>
+                    {% for prognoz in all_metcast %}
+
+                      <tr>
+                          <th>{{prognoz.date_night4}}</th>
+                          <th>{{prognoz.temp_night4}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_max_night4}}<sup>o</sup></th>
+                          <th>{{prognoz.temp_min_night4}}<sup>o</sup></th>
+                            <th><img src="http://openweathermap.org/img/w/{{prognoz.icon}}.png" alt="Фото погоды"></th>
+                      </tr>
+                        {% endfor %}
+                    </table></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
